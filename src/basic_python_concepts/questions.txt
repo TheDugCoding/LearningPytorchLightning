@@ -1,0 +1,117 @@
+---running python, variables and basic data types---
+
+Questions
+
+1.  how can I run a Python program?
+2.  how to select the working environment from console?
+3.  Is python a compiler or an interpreter?
+4.  what are the rules for naming variables?
+5.  what is a string?
+6.  what is a variable?
+7.  explain what these functions do: .title(), .upper(), .lower(), print(), .strip(), removeprefix()
+8.  what are f-strings?
+9.  what is the type returned by python when you do a divison?
+10. can you do multiple assignment in the same line of code?
+11. what is a constant?
+12. how to write comments
+
+Answers
+
+1.  type: python program_name_x
+2.  type: cd working_environment/folder
+3.  interpreter, Python executes the code line by line
+4.  variables can't start with a number, spaces are not allowed,
+    do not use python keywords, variables should be descriptive and lowercase
+5.  a string is a sequence of characters, it is inside a single or double quote
+6.  a piece of memory that stores a value and that can be changed
+7.  .title(): each world in a string starts with a capital letter
+    .upper(): every character in a string is uppercase
+    .lower(): every character in a string is lowercase
+    print(message): print on screen
+    .strip(): remove whitespaces at the beginning or at the end of a string. there are
+    also the .lstrip() and .rstrip(). Moreover, we can also use .strip('gar') to remove
+    'gar' from a string
+    removeprefix(string): remove prefix from a string
+8.  f-strings are used to put the content of a variable into a string f"{first_name} {last_name}",
+    useful with print()
+9.  float
+10. yes x, y, z = 0, 0, 0
+11. a variable which value doesn't change MAX_CONNECTIONS = 5000
+12. # or ''''''
+
+
+---Lists, tuples, set---
+
+Questions
+
+1.  what is a list? how can I define one?
+2.  how can I access an element in a list? how can I access the last element?
+3.  explain how: modify an element in a list, .append(), .insert(), del, .pop()
+    .remove(), .sort(), sorted(), .reverse(), len(), min(), max(), sum()
+4.  how can you loop a list?
+5.  how can we make numerical lists?
+6.  describe slicing, [0:3], [1:4], [:4], [:-3], [:], [0:11:2]
+7.  what is a tuple?
+8.  what is a set
+
+Answers
+
+1. a List is a collection of items in a particular order, it can contain duplicates
+    You can define one like this bicycles = ['trek', 'cannondale', 'redline', 'specialized']
+2.  bicycles[0], bicycles[-1]
+3.  motorcycles[0] = 'ducati'
+    .append() append an element at the end of the list
+    motorcycles.insert(0, 'ducati')
+    del motorcycles[0], it works with indexes and it DOES NOT RETURN
+    .pop() removes the last element of a list or we can also use it with an index
+    it returns the deleted element
+    .remove('car') it removes the actual value from the list but it removes only the first occurrence
+    .sort() changes the order of the elements in a list permanently, for a reverse ordering use
+    .sort(reverse=True)
+    sorted() sort a list temporarily
+    .reverse() reverse a list
+    len(my_list) find the length of a list
+    min() find the min in a list
+    max() find the max in a list
+    sum() sum all the elements in a list
+4.  for magician in magicians: or we can use list comprehension [print(x) for x in elements]
+5.  numbers = list(range(1, 6)) it stops at 5, or we can use even_numbers = list(range(2, 11, 2))
+6.  a slice a subset of elements of a list, [0:3] take elements from 0 to 2, [1:4] take
+    elements from 1 to 4, [:4] from the beginning to 3, [:-3] last 3 elements of the list, [:] make
+    a copy of the list, [0:11:2] from 0 to 11 with step of 2
+7.  it is a list with immutable objects dimensions = (200, 50)
+8.  A set is a collection which is unordered, unchangeable, and unindexed, and do not allow duplicate values.
+    thisset = {"apple", "banana", "cherry"}
+
+
+---classes---
+
+Questions
+
+1.  what is a class? and an instance
+2.  The __init__() Method
+3.  difference between function and method
+4.  what is self and why it is important
+5.  how to create an instance
+6.  how to access attributes and methods
+
+Answers
+
+1.  A Class is like an object constructor, or a "blueprint" for creating objects. an instance
+    is an object created from a class
+    class Dog:
+        """A simple attempt to model a dog."""
+        def __init__(self, name, age):
+            """Initialize name and age attributes."""
+            self.name = name
+            self.age = age
+
+2.  when we make an instance of the class we call the init method. This method initializes all
+    attributes
+3.  a method is a function that belongs to a class
+4.  The self parameter is a reference to the current instance of the class,
+    and is used to access variables that belong to the class.
+5.  my_dog = Dog('Willie', 6)
+6.  my_dog.name, my_dog.sit()
+
+
