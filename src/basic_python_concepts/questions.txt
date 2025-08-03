@@ -114,4 +114,13 @@ Answers
 5.  my_dog = Dog('Willie', 6)
 6.  my_dog.name, my_dog.sit()
 
+---reading files and exceptions---
 
+Questions
+
+1.  difference between error and exception
+
+Answers
+
+1.  An error is an issue in a program that prevents the program from completing its task.
+    In comparison, an exception is a condition that interrupts the normal flow of the program.
