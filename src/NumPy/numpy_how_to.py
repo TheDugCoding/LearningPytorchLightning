@@ -114,4 +114,84 @@ operators and np variation are roughly the same
 np.log(x)
 np.exp(x)
 np.power(3, x)
+.sum()
+.prod()
+.mean()
+.std()
+.min()
+.max()
+
+
+broadcasting allows to perform ufuncs on arrays of different sizes
+
+explanation
+https://www.youtube.com/watch?v=oG1t3qlzq14
+
+Rules of Broadcasting
+Broadcasting in NumPy follows a strict set of rules to determine the interaction
+between the two arrays:
+• Rule 1: If the two arrays differ in their number of dimensions, the shape of the
+one with fewer dimensions is padded with ones on its leading (left) side.
+• Rule 2: If the shape of the two arrays does not match in any dimension, the array
+with shape equal to 1 in that dimension is stretched to match the other shape.
+• Rule 3: If in any dimension the sizes disagree and neither is equal to 1, an error is
+raised.
+
+remember that dimensions with 1 are always compatible,
+
+(2,3) is not compatible with (3, 2)
+(2,) is not compatible with (3, 2), because (2,) ->(padding)->(2, 1)
+
+shape that is compatible
+x.shape == (1, 2, 3, 5, 1 ,11, 1, 17)
+y.shape ==          (1, 7, 1,  1, 17)
+
+after padding
+
+y.shape == (1, 1, 1, 1, 7, 1,  1, 17)
+
+shape results
+
+(1, 2, 3, 5, 7, 11, 1, 17)
+
+another example
+2,3,3
+3,
+after padding
+2,3,3
+1,3,3
+
+resulting in
+2,3,3
+
+
+
 '''
+
+
+#the where function
+# Create an array
+arr = np.array([10, 15, 20, 25, 30])
+
+# Use np.where() to find indices of elements greater than 20
+result = np.where(arr > 20)
+
+print(result)
+
+# Create an array
+arr = np.array([10, 15, 20, 25, 30])
+
+# Use np.where() to replace values based on condition
+# If the value is greater than 20, return 1, otherwise return 0
+result = np.where(arr > 20, 1, 0)
+
+print(result)
+
+# Create two arrays
+arr1 = np.array([10, 15, 20, 25, 30])
+arr2 = np.array([100, 150, 200, 250, 300])
+
+# Use np.where() to select elements from arr1 where the condition is true, and arr2 otherwise
+result = np.where(arr1 > 20, arr1, arr2)
+
+print(result)

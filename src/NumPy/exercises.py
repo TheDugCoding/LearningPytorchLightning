@@ -48,3 +48,19 @@ print('slicing, select first and third row\n', array_two_dimensions[[0,2]])
 print('slicing from 2nd row from 5th column\n', array_two_dimensions[1:, 5:])
 #all rows except column 3
 print('all rows except column 3\n', array_two_dimensions[:, [i for i in range(array_two_dimensions.shape[1]) if i != 2]])
+
+
+#ufunc and broadcasting
+
+a = np.array([[1], [2], [3]])
+b = np.array([10, 20, 30])
+#checking the numer of dimensions
+
+print('a shape', a.shape)
+print('b shape', b.shape)
+# by the rules b has fewer dimensions so we add padding to the left
+#  (3,) -> (1, 3)
+b = np.array([[x] for x in range(10,31,10)]).reshape(1,3)
+print('new b', b, b.shape)
+#rule 2
+print(a + b)
