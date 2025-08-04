@@ -40,19 +40,26 @@ Answers
 12. # or ''''''
 
 
----Lists, tuples, set---
+---Lists, tuples, set, dictionaries---
 
 Questions
 
 1.  what is a list? how can I define one?
 2.  how can I access an element in a list? how can I access the last element?
-3.  explain how: modify an element in a list, .append(), .insert(), del, .pop()
+3.  explain how: modify an element in a list, .append(), .insert(), del , .pop()
     .remove(), .sort(), sorted(), .reverse(), len(), min(), max(), sum()
 4.  how can you loop a list?
-5.  how can we make numerical lists?
+5.  how can we make a numerical lists?
 6.  describe slicing, [0:3], [1:4], [:4], [:-3], [:], [0:11:2]
 7.  what is a tuple?
-8.  what is a set
+8.  what is a set?
+9.  what is a dictionary? how can I define one?
+10. can I have two identical keys in a dictionary?
+11. how can I access a value in a dictionary?
+12. can I add a new element in a dictionary? and if yes how?
+13. how to modify an element in a dictionary
+14. removing elements from a dictionary
+15. explain these functions: get(), .items(), .keys(), .values(), .clear()
 
 Answers
 
@@ -82,7 +89,20 @@ Answers
 7.  it is a list with immutable objects dimensions = (200, 50)
 8.  A set is a collection which is unordered, unchangeable, and unindexed, and do not allow duplicate values.
     thisset = {"apple", "banana", "cherry"}
-
+9.  a dictionary is a collection of key-value pairs alien_0 = {'color': 'green', 'points': 5}
+10. no, keys are unique
+11. motorcycles['ducati']
+12. yes you can, motorcycles['honda'] = ['RX-600']
+13. alien_0['color'] = 'yellow'
+14. del alien_0['points']
+15. get(): you use get when you are not sure if a key exists. first parameter is
+    the key, second optional parameter is the value if the key doesn't exist then
+   get() will search for the value
+   .items(): used to get all the key-value pairs from the dictionary useful
+   when you want to use a loop
+   .keys(): returns all keys, useful for a loop
+   .values(): returns all values, useful for a loop
+   .clear(): removes all values from the dictionary
 
 ---classes---
 
@@ -119,8 +139,15 @@ Answers
 Questions
 
 1.  difference between error and exception
+2.  explain how python handles exceptions: try, except, else, finally
+3.  Can we throw personalized exception?
 
 Answers
 
 1.  An error is an issue in a program that prevents the program from completing its task.
     In comparison, an exception is a condition that interrupts the normal flow of the program.
+2.  try: in try we put code lines that may cause an exception
+    except: catch the exception, could be specific or catch every exception
+    else: if no exception is thrown execute this code
+    finally: execute this code regardless if an exception was thrown or not
+3.  Yes, we can

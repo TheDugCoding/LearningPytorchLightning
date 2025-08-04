@@ -1,0 +1,8 @@
+Questions
+
+1.  numpy array vs list
+
+Answers
+
+1.  numpy arrays are more efficient, whereas list are more flexible. arrays contain only one type of data
+    Instead lists contain a lot of references to different objects
