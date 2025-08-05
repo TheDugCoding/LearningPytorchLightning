@@ -31,3 +31,33 @@ if __name__ == '__main__':
     test_list(numbers)
     print(numbers)
 
+#https://realpython.com/python-kwargs-and-args/
+#args and kwargs
+'''suppose you don't know how many parameters you want to pass to a function you can then use 
+args and kwargs for this purpose
+args are positional arguments   func(1, 2, 3)
+kwargs are keyword arguments   func(a=1, b=2, c=3)
+
+iterable unpacking
+a, *b, c = [1, 2, 3, 4, 5]
+print(b)
+# [2, 3, 4]
+'''
+
+#args is considered a tuple here
+def my_sum(*args):
+    result = 0
+    # Iterating over the Python args tuple
+    for x in args:
+        result += x
+    return result
+
+print(my_sum(1, 2, 3))
+
+def concatenate(**words):
+    result = ""
+    for arg in words.values():
+        result += arg
+    return result
+
+print(concatenate(a="Real", b="Python", c="Is", d="Great", e="!"))
