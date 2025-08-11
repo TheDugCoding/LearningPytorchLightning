@@ -1,5 +1,6 @@
 from utilities import retrieve_data_path
 import json
+from typing import NamedTuple
 
 '''
 You are tasked with building a command-line Book Catalog Manager that allows users to manage a personal
@@ -15,29 +16,37 @@ This project is designed to give you hands-on experience with the foundational t
 
 '''
 
+class BookAttributes(NamedTuple):
+    title: str
+    author: str
+    genre: str
+    publication_year: str
+
 class Catalog:
     def __init__(self):
         self.books = []
 
     #this solution is not scalable, everytime we add a new attributes for a book we also need to add in multiple lines of code
     def add_book(self, title, author, genre, publication_year):
-        try:
-            if title and author and genre and publication_year:
-                self.books.append(create_book(title, author, genre, publication_year))
-                #print(f'Book {title} {author} {genre} {publication_year} successfully added.')
-            else:
-                s = ''
-                if not title:
-                    s += ' title'
-                if not author:
-                    s += ' author'
-                if not genre:
-                    s += ' genre'
-                if not publication_year:
-                    s += ' publication_year'
-                raise ValueError('Missing fields:' + str(s))
-        except ValueError as err:
-            print(err)
+        if None in (title, author, genre, publication_year):
+
+            try:
+                if title and author and genre and publication_year:
+                    self.books.append(create_book(title, author, genre, publication_year))
+                    #print(f'Book {title} {author} {genre} {publication_year} successfully added.')
+                else:
+                    s = ''
+                    if not title:
+                        s += ' title'
+                    if not author:
+                        s += ' author'
+                    if not genre:
+                        s += ' genre'
+                    if not publication_year:
+                        s += ' publication_year'
+                    raise ValueError('Missing fields:' + str(s))
+            except ValueError as err:
+                print(err)
 
     def add_book_from_user(self):
         title = input('what is the title?\n')
