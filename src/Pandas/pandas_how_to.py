@@ -1,8 +1,23 @@
 import pandas as pd
 import numpy as np
+from pathlib import Path
 
 #source
 #https://wesmckinney.com/book/pandas-basics
+
+#I create this function mostly because the path relative position depends on the location from which we call the program
+def retrieve_data_path():
+    #current working directory
+    cwd = Path.cwd()
+    #print absolute path
+    print(cwd)
+    while cwd.name != 'src':
+        cwd = cwd.parent
+    return cwd.parent.joinpath('data')
+
+
+# reading a file data should always be in the data folder
+path_csv = 'pandas_data/data.csv'
 
 #in pandas, we have dataframe and series. A dataframe is a multidimensional array, a series a single dimensional array
 #compared to numpy, pandas offers more flexibility (attaching labels, working with missing data etc.)
@@ -61,15 +76,37 @@ print(data.describe())
 print(data['area'])
 print(data.area)
 
-#to retrieve rows we can use loc and iloc, loc selects columns names (labels) while iloc uses numerical indices
+#to retrieve rows we can use loc and iloc, loc selects columns names (labels) while iloc uses numerical indices even if there are no numerical indexes
+#!IMPORTANT slicing in pandas also includes the last element!
 print(data.loc['California'])
 print(data.loc[['California' ,'Texas']])
+#we can also combine rows and columns by adding a comma
+#data.loc["Colorado", ["two", "three"]]
+#we can also use slicing
+#data.iloc[:, :3][data.three > 5]
+#data.loc[data.three >= 2]
 print(data.loc['California':'Texas'])
 #we can also use conditionals
 print(data.loc[data['area'] != 423967])
 
 #with loc is similar
 print(data.iloc[0, 0])
+
+# df[column]            Select single column or sequence of columns from the DataFrame;
+#                       special case conveniences: Boolean array (filter rows), slice (slice rows),
+#                       or Boolean DataFrame (set values based on some criterion)
+# df.loc[rows]          Select single row or subset of rows from the DataFrame by label
+# df.loc[:, cols]       Select single column or subset of columns by label
+# df.loc[rows, cols]    Select both row(s) and column(s) by label
+# df.iloc[rows]         Select single row or subset of rows from the DataFrame by integer position
+# df.iloc[:, cols]      Select single column or subset of columns by integer position
+# df.iloc[rows, cols]   Select both row(s) and column(s) by integer position
+# df.at[row, col]       Select a single scalar value by row and column label
+# df.iat[row, col]      Select a single scalar value by row and column position (integers)
+# reindex method        Select either rows or columns by labels
+
+#to avoid confusion it is always recommended to use loc and iloc, also to modify a value always use a single assignment
+#data.loc[data.three == 5]["three"] = 6, this assignment for example won't work
 
 # when we assign new values to an existing column the length of a series must match the length of the column
 #assign a column that doesn't exist will create a new column
@@ -102,5 +139,15 @@ print(data2)
 
 #we can also use .drop() to drop a column
 print(data.drop(columns=["position"]))
+#remember that drop do not remove a column, but it creates a view
+print(data)
+#the difference between drop and del is that del operates only on columns, drop on columns and rows
 
+#reading files
+#there are a lot of parameters that we can use check the official documentation for that, for example
+#separator, which header to use etc.
+df = pd.read_csv(retrieve_data_path().joinpath(path_csv))
 
+print('df', df)
+
+#now we can do classic data cleaning, pre processing etc
