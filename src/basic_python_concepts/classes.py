@@ -6,9 +6,9 @@ class Battery():
 class Car:
     # a function that is part of a class is called a method
     # init define the attributes of a class
-    def __init__(self, make, model, year):
+    def __init__(self, maker, model, year):
         #these are attributes
-        self.make = make
+        self.maker = maker
         self.model = model
         self.year = year
         #we can also set attributes (even classes) without passing the parameter
@@ -30,8 +30,8 @@ class Car:
 #this is inheritance, we take info from the parent class, we also take all the methods
 class ElectricCar(Car):
     #call the
-    def __init__(self, make, model, year):
-        super().__init__(make, model, year)
+    def __init__(self, maker, model, year):
+        super().__init__(maker, model, year)
         self.battery.battery_level = 80
 
     def drive(self):
@@ -54,3 +54,5 @@ if __name__ == "__main__":
     electric_car.drive()
     electric_car.change_speed(100)
     electric_car.drive()
+    #it is also possible to add a new attribute to the class
+    Car.hood = 'red'
